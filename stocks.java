@@ -4,10 +4,14 @@ public class stocks {
     private double value;
     private int type; // used to dictate the stock's price trend
     private double[] listOfvalues;
-    public stocks(String name, double price, int type){
+    private double ROCPerHour;
+    private double ROCPerWeek;
+    public stocks(String name, double price, int type, double ROCPerHour, double ROCPerWeek){
         this.name = name;
         this.value = price;
         this.type = type;
+        this.ROCPerHour = ROCPerHour; //0-1
+        this.ROCPerWeek = ROCPerWeek; //0-1
     }
     public stocks(String name, double price){
         // will randomly set the stock type if you want it to be a surprise
