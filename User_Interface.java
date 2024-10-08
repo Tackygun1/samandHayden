@@ -1,99 +1,122 @@
 import javax.swing.*;
+import java.awt.event.*;
 import java.awt.*;
+
 public class User_Interface{
 
     public static void main(String args[]){
 
-        JFrame Stocksframe = new JFrame("Stocks");
-        //JFrame Pokerframe = new JFrame("Poker");
+        int money = 1000;
 
-        Stocksframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame mainFrame = new JFrame("Main Frame");
 
-        Stocksframe.setSize(400,400);
-        //Pokerframe.setSize(400, 400);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        mainFrame.setSize(400,400);
 
-        //Pokerframe.setVisible(true);
+        JPanel NPanel = new JPanel();
 
-        //JButton button1 = new JButton("Hi");
-        //Stocksframe.getContentPane().add(button1);
+        JButton butPoker = new JButton("Poker");
+        JButton butStocks = new JButton("Stocks");
+        JButton butRoulette = new JButton("Roulette");
+        JButton butBJ = new JButton("BlackJack");
 
-        Stocksframe.setVisible(true);
+        NPanel.add(butPoker);//Buttons
+        NPanel.add(butStocks);
+        NPanel.add(butRoulette);
+        NPanel.add(butBJ);
 
-        JMenuBar menuBar = new JMenuBar();
+        JPanel SPanel = new JPanel();
 
-        JMenu fileMenu = new JMenu("Open");
+        SPanel.add(new JLabel("$"+money));
 
-        menuBar.add(fileMenu);
-
-
-        JMenuItem pokerMenu = new JMenuItem("Poker");
-        JMenuItem blackJackMenu = new JMenuItem("BlackJack");
-
-        fileMenu.add(pokerMenu);
-        fileMenu.add(blackJackMenu);
+        mainFrame.add(SPanel, BorderLayout.SOUTH);
+        mainFrame.add(NPanel, BorderLayout.NORTH);
 
 
 
-        // Text Area at the Center
+        butPoker.addActionListener(new pokerListener());
+        butBJ.addActionListener(new BJListener());
+        butRoulette.addActionListener(new rouletteListener());
+        butStocks.addActionListener(new stocksListener());
 
-
-        JTextArea textArea = new JTextArea();
-
-
-
-
-        //Create the panel at bottom and add label, textArea and buttons
-
-
-        JPanel panel = new JPanel(); // this panel is not visible in output
-
-
-        JLabel label = new JLabel("Please Enter Text");
-
-
-        JTextField textField = new JTextField(15); // accepts upto 15 characters
-
-
-        JButton btn_send = new JButton("Send");
-
-
-        JButton btn_reset = new JButton("Reset");
-
-
-        panel.add(label); // Components Added using Flow Layout
-
-
-        panel.add(textField);
-
-
-        panel.add(btn_send);
-
-
-        panel.add(btn_reset);
-
-
-
-
-
-
-
-
-        //Adding Components to the frame.
-
-
-        Stocksframe.getContentPane().add(BorderLayout.SOUTH, panel);
-
-
-        Stocksframe.getContentPane().add(BorderLayout.NORTH, menuBar);
-
-
-        Stocksframe.getContentPane().add(BorderLayout.CENTER, textArea);
-
-        Stocksframe.setVisible(true);
+        //mainFrame.setLayout(new BorderLayout());
+        
+        mainFrame.setVisible(true);
 
 
 
     }
+
+    public static class pokerListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+                JFrame pokerFrame = new JFrame("Poker");
+                pokerFrame.setSize(400, 400);
+
+                JButton button2 = new JButton("Test");
+
+                pokerFrame.getContentPane().add(button2);
+
+                pokerFrame.setVisible(true);
+
+
+        }
+    }
+    public static class stocksListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            JFrame stocksFrame = new JFrame("Stocks");
+            stocksFrame.setSize(400, 400);
+
+            JButton button2 = new JButton("Test");
+
+            stocksFrame.getContentPane().add(button2);
+
+            stocksFrame.setVisible(true);
+
+
+        }
+    }
+    public static class BJListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            JFrame BJFrame = new JFrame("Blackjack");
+            BJFrame.setSize(400, 400);
+
+            JButton button2 = new JButton("Test");
+
+            BJFrame.getContentPane().add(button2);
+
+            BJFrame.setVisible(true);
+
+
+        }
+    }
+    public static class rouletteListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            JFrame rouletteFrame = new JFrame("Roulette");
+            rouletteFrame.setSize(400, 400);
+
+            JButton button2 = new JButton("Test");
+
+            rouletteFrame.getContentPane().add(button2);
+
+            rouletteFrame.setVisible(true);
+
+
+        }
+    }
+
+
 
 }
