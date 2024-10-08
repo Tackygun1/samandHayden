@@ -6,7 +6,12 @@ public class User_Interface{
 
     public static void main(String args[]){
 
-        int money = 1000;
+        double money = 1000.1;
+
+
+
+
+
 
         JFrame mainFrame = new JFrame("Main Frame");
 
@@ -16,15 +21,19 @@ public class User_Interface{
 
         JPanel NPanel = new JPanel();
 
-        JButton butPoker = new JButton("Poker");
-        JButton butStocks = new JButton("Stocks");
-        JButton butRoulette = new JButton("Roulette");
-        JButton butBJ = new JButton("BlackJack");
+        JButton buttonPoker = new JButton("Poker");
+        JButton buttonStocks = new JButton("Stocks");
+        JButton buttonRoulette = new JButton("Roulette");
+        JButton buttonBJ = new JButton("BlackJack");
+        JButton buttonCraps = new JButton("Craps");
+        JButton buttonSlots = new JButton("Slots");
 
-        NPanel.add(butPoker);//Buttons
-        NPanel.add(butStocks);
-        NPanel.add(butRoulette);
-        NPanel.add(butBJ);
+        NPanel.add(buttonPoker);//Buttons
+        NPanel.add(buttonStocks);
+        NPanel.add(buttonRoulette);
+        NPanel.add(buttonBJ);
+        NPanel.add(buttonCraps);
+        NPanel.add(buttonSlots);
 
         JPanel SPanel = new JPanel();
 
@@ -35,10 +44,12 @@ public class User_Interface{
 
 
 
-        butPoker.addActionListener(new pokerListener());
-        butBJ.addActionListener(new BJListener());
-        butRoulette.addActionListener(new rouletteListener());
-        butStocks.addActionListener(new stocksListener());
+        buttonPoker.addActionListener(new pokerListener());
+        buttonBJ.addActionListener(new BJListener());
+        buttonRoulette.addActionListener(new rouletteListener());
+        buttonStocks.addActionListener(new stocksListener());
+        buttonCraps.addActionListener(new crapsListener());
+        buttonSlots.addActionListener(new slotsListener());
 
         //mainFrame.setLayout(new BorderLayout());
         
@@ -53,14 +64,30 @@ public class User_Interface{
         @Override
         public void actionPerformed(ActionEvent e) {
 
-                JFrame pokerFrame = new JFrame("Poker");
-                pokerFrame.setSize(400, 400);
+            JFrame pokerFrame = new JFrame("Poker");
+            pokerFrame.setSize(400, 400);
 
-                JButton button2 = new JButton("Test");
+            JButton buttonRaise = new JButton("Raise");
+            JButton buttonCall = new JButton("Call");
+            JButton buttonFold = new JButton("Fold");
 
-                pokerFrame.getContentPane().add(button2);
+            JTextField raiseAmount = new JTextField("0000000");
 
-                pokerFrame.setVisible(true);
+            JLabel displayMoney = new JLabel("$"+money);
+
+            JPanel NPanel = new JPanel();
+            JPanel SPanel = new JPanel();
+
+            NPanel.add(buttonFold);
+            NPanel.add(buttonCall);
+            NPanel.add(buttonRaise);
+            NPanel.add(raiseAmount);//Text field
+
+            SPanel.add();
+
+            pokerFrame.add(NPanel, BorderLayout.NORTH);
+
+            pokerFrame.setVisible(true);
 
 
         }
@@ -116,6 +143,42 @@ public class User_Interface{
 
         }
     }
+    public static class crapsListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            JFrame crapsFrame = new JFrame("Craps");
+            crapsFrame.setSize(400, 400);
+
+            JButton button2 = new JButton("Test");
+
+            crapsFrame.getContentPane().add(button2);
+
+            crapsFrame.setVisible(true);
+
+
+        }
+    }
+    public static class slotsListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            JFrame slotsFrame = new JFrame("Slots");
+            slotsFrame.setSize(400, 400);
+
+            JButton button2 = new JButton("Test");
+
+            slotsFrame.getContentPane().add(button2);
+
+            slotsFrame.setVisible(true);
+            }
+        }
+
+
+
+
+
+
 
 
 
