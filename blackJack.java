@@ -24,13 +24,20 @@ public class blackJack {
     private double betAmount;
     private int playerRankAmount;
     private int dealerRankAmount;
-    private Map<String, Integer> playerCards;
-    private Map<String, Integer> dealerCards;
+    private Map<String, Integer> playerCards = new HashMap<>();
+    private Map<String, Integer> dealerCards = new HashMap<>();
     private Map<String, Integer> deck;
     public blackJack(double amount){
         betAmount = amount;
     }
     public void populateDeck(){deck = createRankMap();}
+    public String toString(){
+        String stringDeck = "";
+        for (String key : playerCards.keySet()){
+            stringDeck = stringDeck +" "+key;
+        }
+        return stringDeck;
+    }
     public Map<String, Integer> getCards(String type){
         if (type.equals("dealerCards"))
             return dealerCards;
@@ -70,6 +77,65 @@ public class blackJack {
         }
 
         return "bust";
+    }
+
+    public void giveCard(String action){
+        // gives a card to both the dealer and player
+        populateDeck();
+        System.out.println(this.toString());
+        if (action == "both"){
+            int i = (int)(Math.random()*26);
+            int r = (int)(Math.random()*26);
+            int b = 0;
+            int e = 0;
+            String card1 ="";
+            String card2 ="";
+            for (String card : deck.keySet()){
+                if (e == i){
+                  playerCards.put(card, deck.get(card));
+                  card1 = card;
+                }
+                e++;
+                if (r == b){
+                    dealerCards.put(card, deck.get(card));
+                    card2 = card;
+                }
+                b++;
+            }
+            deck.remove(card1);
+            deck.remove(card2);
+        } else if (action == "player"){
+            int i = (int)(Math.random()*26);
+            int e = 0;
+            String card1 ="";
+            for (String card : deck.keySet()){
+                playerCards.put(card, deck.get(card));
+                card1 = card;
+            }
+            deck.remove(card1);
+
+        }else if (action == "dealer"){
+            int i = (int)(Math.random()*26);
+            int e = 0;
+            String card1 ="";
+            for (String card : deck.keySet()){
+                dealerCards.put(card, deck.get(card));
+                card1 = card;
+            }
+            deck.remove(card1);
+
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+        blackJack game = new blackJack(100);
+        game.giveCard("both");
+        game.giveCard("both");
+        System.out.println(game.calculateAmount(game.playerCards));
+
+
     }
 
 
